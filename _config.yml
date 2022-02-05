@@ -29,6 +29,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 show_excerpts: false
 
 minima:
+  date_format: "%b %-d, %Y"
+
   social_links:
     github: vrziny
     linkedin: vrzin
@@ -41,7 +43,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-remote_theme: jekyll/minima@69664442e5a45f631d5bccaba6d7978a91ce22c8
+remote_theme: jekyll/minima
 
 # Exclude from processing.
 # The following items will not be processed, by default.
