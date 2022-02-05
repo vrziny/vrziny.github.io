@@ -1,9 +1,8 @@
 ---
 layout: post
-title: new post
+title: vrziny.github.io 오픈
 date: 2022-02-05 23:49 +0900
 category: general
 ---
 
-# Hello
-Good boy
+## 오-픈
