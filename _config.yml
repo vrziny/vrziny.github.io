@@ -41,7 +41,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-remote_theme: jekyll/minima
+remote_theme: jekyll/minima@69664442e5a45f631d5bccaba6d7978a91ce22c8
 
 # Exclude from processing.
 # The following items will not be processed, by default.
