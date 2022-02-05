@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+// Fix error related grey-color
+$grey-color:       #828282 !default;
+
 // Define defaults for each variable.
 $base-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif !default;
 $code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
