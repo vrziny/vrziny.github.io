@@ -5,6 +5,8 @@ date: 2022-02-07 10:56 +0900
 category: Unity
 ---
 
+Android 프로젝트에서 Unity를 Library 형태로 만드는 방법에 대해 기술합니다.
+
 >**NOTE**
 > 이 문서는 Android 12 (API Level 31) 기준으로 작성되었습니다.
 
