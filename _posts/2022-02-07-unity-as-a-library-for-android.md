@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Unity as a Libary for Android
+title: Unity as a Library for Android
 date: 2022-02-07 10:56 +0900
 category: Unity
 ---
