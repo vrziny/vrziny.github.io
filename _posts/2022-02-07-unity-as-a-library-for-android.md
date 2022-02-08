@@ -19,16 +19,8 @@ D:\Projects\UaalProject이라는 폴더를 만듭니다.
   - UnityProject
 ```
 
-Android Studio를 실행해서 New Project 선택 후 Basic Activity를 선택합니다.
-
-```
-Name: AndroidProject
-Package name: com.example.androidproject
-Save location: D:\Projects\UaalProject\AndroidProject
-Language: Java or Kotlin
-```
-
-위와 같이 설정한 뒤 Finish를 선택해서 프로젝트를 생성합니다.
+&nbsp;&nbsp;
+# Unity
 
 Unity Hub를 실행해서 새 프로젝트를 선택합니다.
 
@@ -58,7 +50,7 @@ Project창에서 Assets에서 Plugins\Android 폴더를 생성하고 아래의 �
 파일 생성 방법은 Project창에서 Plugins\Android 폴더로 이동 후 우클릭해서 Show in Explorer를 선택한 다음 새로 만들기>텍스트 문서를 선택해서 원하는 편집기로 파일을 만든 후 Unity로 돌아오면 됩니다.
 
 ```java
-// 파일명: D:\Projects\UaalProject\UnityProject\Assets\Plugins\Android\OverrideUnityActivity.java
+// D:\Projects\UaalProject\UnityProject\Assets\Plugins\Android\OverrideUnityActivity.java
 
 package com.company.product;
 
@@ -105,44 +97,42 @@ public abstract class OverrideUnityActivity extends UnityPlayerActivity
         </activity>
     </application>
 </manifest>
+
+<!-- D:\Projects\UaalProject\UnityProject\Assets\Plugins\Android/AndroidManifest.xml -->
  ```
 
 Build Settings로 이동해서 Export Project를 체크하고 Export를 눌러줍니다.
 
-창이 뜨면 D:\Projects\UaalProject\UnityProject 하위에 androidBuild라는 폴더를 만들고 폴더 안으로 들어가서 폴더 선택을 선택합니다.
+창이 뜨면 D:\Projects\UaalProject\UnityProject 하위에 androidBuild라는 폴더를 만들고 폴더 안으로 들어가서 폴더 선택을 눌러줍니다.
 
-Android Studio로 돌아갑니다.
+&nbsp;&nbsp;
+# Android Studio
 
-D:\Projects\UaalProject\UnityProject\androidBuild\gradle.properties 파일에 아래의 내용을 아래와 같이 업데이트합니다.
+Android Studio를 실행해서 New Project 선택 후 Basic Activity를 선택합니다.
 
 ```
+Name: AndroidProject
+Package name: com.example.androidproject
+Save location: D:\Projects\UaalProject\AndroidProject
+Language: Java or Kotlin
+```
+
+위와 같이 설정한 뒤 Finish를 선택해서 프로젝트를 생성합니다.
+
+Project의 gradle.properties 파일에 아래의 내용을 아래와 같이 업데이트합니다.
+
+```properties
+# D:\Projects\UaalProject\UnityProject\androidBuild\gradle.properties\gradle.properties
+
 org.gradle.jvmargs=-Xmx4096M -Dfile.encoding=UTF-8
 org.gradle.parallel=true
 android.useAndroidX=true
 ```
 
-D:\Projects\UaalProject\AndroidProject\app\build.gradle 파일에 아래의 내용을 추가합니다.
+Project의 settings.gradle 파일에 아래의 내용으로 업데이트합니다.
 
 ```groovy
-android {
-    ...
-    defaultConfig {
-        ndk {
-            abiFilters 'armeabi-v7a', 'x86'
-        }
-    }
-}
-...
-dependencies {
-    ...
-    implementation project(':unityLibrary')
-    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), include: ['*.jar'])
-}
-```
-
-D:\Projects\UaalProject\AndroidProject\settings.gradle 파일에 아래의 내용으로 업데이트합니다.
-
-```groovy
+// D:\Projects\UaalProject\AndroidProject\settings.gradl
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -151,6 +141,7 @@ pluginManagement {
     }
 }
 
+// Declare here for flatDir (It's changed since Android 12)
 include ':unityLibrary'
 project(':unityLibrary').projectDir=new File('..\\UnityProject\\androidBuild\\unityLibrary')
 
@@ -169,6 +160,28 @@ include ':app'
 
 ```
 
+App의 build.gradle 파일에 아래의 내용을 추가합니다.
+
+```groovy
+// D:\Projects\UaalProject\AndroidProject\app\build.gradle
+
+android {
+    ...
+    defaultConfig {
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+    }
+}
+...
+dependencies {
+    ...
+    implementation project(':unityLibrary')
+    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), include: ['*.jar'])
+}
+```
+
+
 gradle 파일 중 아무거나 선택해서 Sync Now를 선택합니다. 문제가 없으면 빌드가 성공했다는 로그가 나올 것입니다. 문제가 생기면 아래 사이트를 참고해서 다시 한번 잘 설정해주세요.
 
 https://github.com/Unity-Technologies/uaal-example/blob/master/docs/android.md
@@ -177,6 +190,8 @@ Android Studio에서 app/java/com.example.androidproject를 선택해서 하위�
 
 Kotlin
 ```kotlin
+// D:\Projects\UaalProject\AndroidProject\app\src\main\java\com\example\androidproject\MainUnityActivity.kt
+
 package com.example.androidproject
 
 import android.content.Intent
@@ -194,6 +209,8 @@ class MainUnityActivity : OverrideUnityActivity() {
 ```
 Java
 ```java
+// D:\Projects\UaalProject\AndroidProject\app\src\main\java\com\example\androidproject\MainUnityActivity.java
+
 package com.example.androidproject;
 
 import android.content.Intent;
@@ -217,6 +234,8 @@ public class MainUnityActivity extends OverrideUnityActivity {
 
 Kotlin
 ```kotlin
+// D:\Projects\UaalProject\AndroidProject\app\src\main\java\com\example\androidproject\MainActivity.kt
+
 ...
 import android.content.Intent;
 ...
@@ -230,6 +249,8 @@ import android.content.Intent;
 ```
 Java
 ```java
+// D:\Projects\UaalProject\AndroidProject\app\src\main\java\com\example\androidproject\MainActivity.java
+
 ...
 import android.content.Intent;
 ...
@@ -245,16 +266,18 @@ import android.content.Intent;
         ....
 ```
 
-Android Studio에서 app 하위의 res의 values의 strings.xml에 아래의 리소스를 추가해줍니다.
+App 하위의 res의 values의 strings.xml에 아래의 리소스를 추가해줍니다.
 
 ```xml
 <resources>
     ...
     <string name="game_view_content_description">Game view</string>
 <resources>
+
+<!-- // D:\Projects\UaalProject\AndroidProject\app\src\main\res\values\strings.xml -->
 ```
 
-Android Studio에서 app 하위의 manifests를 선택해서 아래와 같은 activity를 추가해줍니다.
+App 하위의 manifests를 선택해서 아래와 같은 activity를 추가해줍니다.
 
 ```xml
 <manifest>
@@ -271,6 +294,10 @@ Android Studio에서 app 하위의 manifests를 선택해서 아래와 같은 ac
         </activity>
     </application>
 </manifest>
+
+<!-- D:\Projects\UaalProject\AndroidProject\app\src\main\AndroidManifest.xml -->
 ```
 
+&nbsp;&nbsp;
+# Build and Run
 이제 앱을 실행하고 Floating 버튼을 누르면 Unity가 라이브러리로부터 실행됩니다.
