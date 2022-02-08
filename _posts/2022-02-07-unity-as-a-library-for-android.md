@@ -98,7 +98,7 @@ public abstract class OverrideUnityActivity extends UnityPlayerActivity
     </application>
 </manifest>
 
-<!-- D:\Projects\UaalProject\UnityProject\Assets\Plugins\Android/AndroidManifest.xml -->
+<!-- D:\Projects\UaalProject\UnityProject\Assets\Plugins\Android\AndroidManifest.xml -->
  ```
 
 Build Settings로 이동해서 Export Project를 체크하고 Export를 눌러줍니다.
