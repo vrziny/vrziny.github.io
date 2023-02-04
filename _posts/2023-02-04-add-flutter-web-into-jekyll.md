@@ -1,6 +1,6 @@
 ---
 layout: single
-title: vrziny.github.io 오픈
+title: Jekyll에 Flutter Web App 배포 방법
 date: 2023-02-04 11:11 +0900
 category: Flutter
 ---
